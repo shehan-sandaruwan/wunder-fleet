@@ -1,0 +1,32 @@
+@import "variables";
+@import "mixins";
+
+.navbarContainer {
+  width: 100%;
+  height: 56px;
+  top: 10px;
+  background: var(--color-light-transparent-alpha);
+  backdrop-filter: saturate(180%) blur(0.3125rem);
+  z-index: 2;
+  border-bottom: 1px solid var(--color-light-border);
+}
+
+.navbarContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0.9375rem;
+  padding-left: 0.9375rem;
+  margin-right: 130px;
+  margin-left: 130px;
+  height: inherit;
+}
+
+.navbarMainLogo {
+  @include logo-text-26;
+}
+
+.registerButton {
+  @include register-button;
+}

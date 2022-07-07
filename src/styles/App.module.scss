@@ -1,0 +1,52 @@
+@import "variables";
+@import "mixins";
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.mainHeroSection {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  background-image: url("./images/hero-bg-2021_2x.jpg");
+  background-size: cover;
+}
+
+.heroBackgroundImage {
+  width: 100%;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  flex: 1;
+  align-items: center;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.heroTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.heroContentText {
+  @include logo-text-48;
+}
+
+.heroMainImage {
+  margin-left: auto;
+  position: absolute;
+}
+
+.registerButton {
+  @include register-button;
+}

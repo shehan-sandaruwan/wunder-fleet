@@ -1,0 +1,66 @@
+@mixin logo-text-26 {
+  font-size: var(--font-family);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-26);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--color-brand-primary-beta);
+}
+
+@mixin logo-primary-beta-text-26 {
+  font-size: var(--font-family);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-26);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--color-brand-primary-beta);
+}
+
+@mixin logo-text-48 {
+  font-size: var(--font-family);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-48);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--color-dark-alpha);
+}
+
+@mixin header-banner-description-16 {
+  font-size: var(--font-family);
+  font-size: var(--unnamed-font-size-16);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--color-dark-alpha);
+}
+
+@mixin header-banner-description-12 {
+  font-size: var(--font-family);
+  font-size: var(--unnamed-font-size-12);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-565656);
+}
+
+@mixin header-banner-description-14 {
+  font-size: var(--font-family);
+  font-weight: var(--unnamed-font-weight-500);
+  font-size: var(--unnamed-font-size-14);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-565656);
+}
+
+@mixin register-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-brand-primary-beta);
+  color: var(--color-light-alpha);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 2.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-brand-primary-beta);
+  transition: color var(--transition-duration1),
+    background-color var(--transition-duration1),
+    border-color var(--transition-duration1);
+  cursor: pointer;
+}
