@@ -36,6 +36,20 @@
   color: var(--unnamed-color-565656);
 }
 
+@mixin successBaner-banner-description-16 {
+  font-size: var(--font-family);
+  font-size: var(--unnamed-font-size-16);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-ffffff);
+}
+
+@mixin successBaner-banner-description-40 {
+  font-size: var(--font-family);
+  font-size: var(--unnamed-font-size-40);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-ffffff);
+}
+
 @mixin header-banner-description-14 {
   font-size: var(--font-family);
   font-weight: var(--unnamed-font-weight-500);

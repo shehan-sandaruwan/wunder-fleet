@@ -1,0 +1,24 @@
+@import "mixins";
+
+.successContainer {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-brand-primary-beta);
+  margin: 85px;
+  border-radius: 12px;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 100px 25px 100px 25px;
+  gap: 15px;
+  flex: 1;
+}
+
+.title1 {
+  @include successBaner-banner-description-16;
+}
+.title2 {
+  @include successBaner-banner-description-40;
+}
