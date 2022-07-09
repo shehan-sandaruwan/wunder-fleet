@@ -1,13 +1,9 @@
 ## Describe possible optimizations for your code
 
-Markup :
-
 1. Could have been used minimum state variables to add UI constrain (Conditional Rendering)
 2. If the typed definition (Interfaces) is declared in one file and exported could be enhanced the re-usability and reduce the duplications.
 
 ## Which things could be done better, than you’ve done it?
-
-Markup :
 
 1. I'm new to typeScript because I previously used Reactjs and JavaScript. I might overlook the ideal method.
 2. I wish I could integrate responsive behavior, but time constraints prevented me.
@@ -15,8 +11,6 @@ Markup :
 4. I could have generated a PR for each commit, but I forgot. Instead, I created a PR for the most recent commit and manually merged it into the main branch.
 
 ## Used technologies
-
-Markup :
 
 - TypeScript
 - ReactJs
@@ -26,16 +20,12 @@ Markup :
 
 ## Problems you faced
 
-Markup :
-
 - Managing the CORS error presented some difficulties.
 - The react ecosystem's type definition was a little difficult.
 - Finding the optimal user interface for the implementation was difficult.
 - Determining the project's structure was difficult.
 
 ## Project structure
-
-Markup :
 
 - src - Main folder
 - Componenet - Main Ui component
