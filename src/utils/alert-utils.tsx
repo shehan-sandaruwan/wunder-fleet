@@ -17,7 +17,7 @@ const AlertUtils = (props: ToastProps) => {
         toast.error(message);
       }
     }
-  }, []);
+  }, [message]);
 
   return (
     <React.Fragment>

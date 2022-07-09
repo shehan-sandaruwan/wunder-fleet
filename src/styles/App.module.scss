@@ -6,6 +6,8 @@
   flex-direction: column;
   height: 100vh;
   width: 100%;
+  gap: 5px;
+  flex: 1;
 }
 
 .mainHeroSection {
@@ -39,7 +41,7 @@
 }
 
 .heroContentText {
-  @include logo-text-48;
+  @include logo-text-40;
 }
 
 .heroMainImage {
@@ -49,4 +51,8 @@
 
 .registerButton {
   @include register-button;
+}
+.registerButton:hover {
+  background-color: var(--color-light-alpha);
+  color: var(--color-brand-primary-beta);
 }

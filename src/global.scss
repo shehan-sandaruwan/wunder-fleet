@@ -1,0 +1,15 @@
+@import "./styles/variables";
+
+button:focus {
+  outline: 1px solid currentColor;
+}
+
+button:hover {
+  background-color: var(--color-light-alpha);
+  color: var(--color-brand-primary-beta);
+}
+
+button[class*="disabledCont"] {
+  background-color: unset !important;
+  color: unset !important;
+}
