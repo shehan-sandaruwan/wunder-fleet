@@ -98,6 +98,7 @@ const Registration = (props: AppProps) => {
 
   const [apiResponseWaiting, setApiResponseWaiting] = useState(false);
   const [isRegistrationCompleted, setIsRegistrationCompleted] = useState(false);
+  const [paymentId, setPaymentId] = useState<string>("");
 
   useEffect(() => {
     if (registerData.data.length > 0) {
@@ -166,6 +167,7 @@ const Registration = (props: AppProps) => {
             severity: "success",
           });
           setIsRegistrationCompleted(true);
+          setPaymentId(resp.data.paymentDataId);
           context?.storePaymentId(resp.data);
         }
       })
@@ -243,7 +245,7 @@ const Registration = (props: AppProps) => {
           </div>
         </>
       )}
-      {isRegistrationCompleted && <SuccesMessage />}
+      {isRegistrationCompleted && <SuccesMessage paymentId={paymentId} />}
     </React.Fragment>
   );
 };
