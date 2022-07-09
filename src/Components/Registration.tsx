@@ -179,7 +179,7 @@ const Registration = (props: AppProps) => {
       .then((resp: any) => {
         setApiResponseWaiting(false);
         if (resp.status === 200) {
-          // setPaymentId(resp.data.paymentDataId);
+          setPaymentId(resp.data.paymentDataId);
           context?.storePaymentId(resp.data);
           setApiResponseMessage({
             message: "Payment details submitted success !",
