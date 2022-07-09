@@ -8,6 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import SuccesMessage from "./SuccessMessage";
 import { useEffect } from "react";
 import AuthContext from "../store/auth-context";
+import { motion } from "framer-motion";
 
 declare interface RegistrationStep {
   step: {
@@ -41,6 +42,21 @@ declare interface AppProps {
     isUserRegistered: boolean;
   };
 }
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+};
 
 const initRegistrationSteps: Array<RegistrationStepObject> = [
   {
@@ -94,10 +110,10 @@ const Registration = (props: AppProps) => {
   const [apiResponseMessage, setApiResponseMessage] = useState({
     message: "",
     severity: "",
+    isRegistrationCompleted: false,
   });
 
   const [apiResponseWaiting, setApiResponseWaiting] = useState(false);
-  const [isRegistrationCompleted, setIsRegistrationCompleted] = useState(false);
   const [paymentId, setPaymentId] = useState<string>("");
 
   useEffect(() => {
@@ -109,9 +125,13 @@ const Registration = (props: AppProps) => {
       );
 
       if (notCompletedObj) {
-        setIsRegistrationCompleted(false);
+        setIsStartRegistration(true);
       } else {
-        setIsRegistrationCompleted(true);
+        setApiResponseMessage({
+          message: "",
+          severity: "",
+          isRegistrationCompleted: true,
+        });
       }
     }
   }, [registerData]);
@@ -154,21 +174,18 @@ const Registration = (props: AppProps) => {
     };
 
     setApiResponseWaiting(true);
-    setApiResponseMessage({
-      message: "",
-      severity: "",
-    });
+
     submitUserDetails(req)
       .then((resp: any) => {
         setApiResponseWaiting(false);
         if (resp.status === 200) {
+          // setPaymentId(resp.data.paymentDataId);
+          context?.storePaymentId(resp.data);
           setApiResponseMessage({
             message: "Payment details submitted success !",
             severity: "success",
+            isRegistrationCompleted: true,
           });
-          setIsRegistrationCompleted(true);
-          setPaymentId(resp.data.paymentDataId);
-          context?.storePaymentId(resp.data);
         }
       })
       .catch((err) => {
@@ -176,6 +193,7 @@ const Registration = (props: AppProps) => {
         setApiResponseMessage({
           message: "Error in submit payment details",
           severity: "error",
+          isRegistrationCompleted: false,
         });
       });
   };
@@ -196,14 +214,13 @@ const Registration = (props: AppProps) => {
   };
   return (
     <React.Fragment>
-      {!isRegistrationCompleted && (
+      <AlertUtil
+        message={apiResponseMessage.message}
+        severity={apiResponseMessage.severity}
+      />
+
+      {!apiResponseMessage.isRegistrationCompleted && (
         <>
-          {apiResponseMessage.message !== "" && (
-            <AlertUtil
-              message={apiResponseMessage.message}
-              severity={apiResponseMessage.severity}
-            />
-          )}
           <div className={styles.registrationContainer}>
             <div className={styles.headerBanner}>
               <div className={styles.headerBannerDetails}>
@@ -218,16 +235,23 @@ const Registration = (props: AppProps) => {
               </div>
               <div>
                 <button
-                  className={styles.continueButton}
-                  disabled={isStartRegistration}
+                  className={`${styles.continueButton} ${
+                    isStartRegistration ? styles.disabledCont : ""
+                  }
+                  `}
                   onClick={onHandleRegistration}
                 >
                   Continue
                 </button>
               </div>
             </div>
-            {(isStartRegistration || !isRegistrationCompleted) && (
-              <div className={styles.stepItemsContainer}>
+            {isStartRegistration && (
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className={styles.stepItemsContainer}
+              >
                 {registrationSteps.map((_step, _index) => {
                   return (
                     <RegistrationStepRendere
@@ -240,12 +264,14 @@ const Registration = (props: AppProps) => {
                     />
                   );
                 })}
-              </div>
+              </motion.div>
             )}
           </div>
         </>
       )}
-      {isRegistrationCompleted && <SuccesMessage paymentId={paymentId} />}
+      {apiResponseMessage.isRegistrationCompleted && (
+        <SuccesMessage paymentId={paymentId} />
+      )}
     </React.Fragment>
   );
 };
@@ -267,7 +293,7 @@ const RegistrationStepRendere = (props: RegistrationStep) => {
   return (
     <React.Fragment>
       {props.step.isDisplay ? (
-        <div className={styles.formContainer}>
+        <motion.div variants={item} className={styles.formContainer}>
           <div className={styles.title}>
             <label className={styles.title1}>{`Step ${props.step.id}`}</label>
             <label className={styles.title2}>{props.step.step}</label>
@@ -396,14 +422,15 @@ const RegistrationStepRendere = (props: RegistrationStep) => {
               </button>
               {props.apiResponseWaiting && (
                 <div className={styles.progressbar}>
-                  <CircularProgress sx={{ color: "#e2e2e2" }} />
+                  <CircularProgress sx={{ color: "#000d36" }} />
                 </div>
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       ) : (
-        <div
+        <motion.div
+          variants={item}
           className={styles.stepContainer}
           onClick={() => props.onStepItemClickHandler(props.step.id)}
         >
@@ -418,7 +445,7 @@ const RegistrationStepRendere = (props: RegistrationStep) => {
               />
             )}
           </div>
-        </div>
+        </motion.div>
       )}
     </React.Fragment>
   );

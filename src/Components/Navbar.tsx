@@ -3,7 +3,9 @@ import styles from "../styles/Navbar.module.scss";
 
 declare interface AppProps {
   showRegistration: boolean;
+  isPartiallyRegistered: boolean;
   logoClickHandler: React.MouseEventHandler<HTMLLabelElement>;
+  onregisterClickHandler: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Navbar = (props: AppProps) => {
@@ -19,9 +21,14 @@ const Navbar = (props: AppProps) => {
               Wunder Mobility
             </label>
           </div>
-          {!props.showRegistration && (
+          {props.showRegistration && (
             <div>
-              <button className={styles.registerButton}>Register</button>
+              <button
+                className={styles.registerButton}
+                onClick={props.onregisterClickHandler}
+              >
+                {props.isPartiallyRegistered ? "Continue" : "Register"}
+              </button>
             </div>
           )}
         </div>

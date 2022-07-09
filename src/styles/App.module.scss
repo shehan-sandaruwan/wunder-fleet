@@ -39,7 +39,7 @@
 }
 
 .heroContentText {
-  @include logo-text-48;
+  @include logo-text-40;
 }
 
 .heroMainImage {
@@ -49,4 +49,8 @@
 
 .registerButton {
   @include register-button;
+}
+.registerButton:hover {
+  background-color: var(--color-light-alpha);
+  color: var(--color-brand-primary-beta);
 }
