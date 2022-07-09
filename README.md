@@ -1,6 +1,38 @@
-# Getting Started with Create React App
+## Describe possible optimizations for your code
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Could have been used minimum state variables to add UI constrain (Conditional Rendering)
+If the typed definition (Interfaces) is declared in one file and exported could be enhanced the re-usability and reduce the duplications.
+
+## Which things could be done better, than you’ve done it?
+
+I'm new to typeScript because I previously used Reactjs and JavaScript. I might overlook the ideal method.
+I wish I could integrate responsive behavior, but time constraints prevented me.
+I could improve the UI and possibly add additional transition animation to the application.
+I could have generated a PR for each commit, but I forgot. Instead, I created a PR for the most recent commit and manually merged it into the main branch.
+
+## Used technologies
+
+TypeScript
+ReactJs
+SCSS
+framer-motion
+react-toastify
+
+## Problems you faced
+
+Managing the CORS error presented some difficulties.
+The react ecosystem's type definition was a little difficult.
+Finding the optimal user interface for the implementation was difficult.
+Determining the project's structure was difficult.
+
+## Project structure
+
+src - Main folder
+Componenet - Main Ui component
+Styles - SCSS modules
+Utils - Commonly usable compoenent
+Api-Service - BE integration
+Store - Data storage unit
 
 ## Available Scripts
 
